@@ -1,4 +1,7 @@
 package Decorator;
 
-public class FolhaPagamento {
+public interface FolhaPagamento {
+        float getSalarioBruto();
+
+        //Tenho uma interface para produtos base
 }
