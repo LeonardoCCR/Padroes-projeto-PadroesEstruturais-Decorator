@@ -3,7 +3,7 @@ package Decorator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class Testes {
+class FolhaPagamentoTest {
 
     @Test
     void deveRetornarSalarioBase() {
@@ -55,16 +55,15 @@ class Testes {
 
     @Test
     void deveRetornarSalarioComTodosModificadores() {
-        // 1000 + 10% (Peric) = 1100
-        // 1100 + 25% (Bonus) = 1375
-        // 1375 - 5% (INSS) = 1306.25
-        // 1306.25 - 6% (VT) = 1227.875
-        FolhaPagamento folha = new ValeTransporte(
-                new DescontoINSS(
-                        new BonusAniversario(
-                                new AdicionalPericulosidade(
-                                        new FolhaPagamentoFuncionario(1000.0f)))));
+        /*
+        1000 + 10% (Peric) = 1100
+        1100 + 25% (Bonus) = 1375
+        1375 - 5% (INSS) = 1306.25
+        1306.25 - 6% (VT) = 1227.875
+        */
+        FolhaPagamento folha = new ValeTransporte(new DescontoINSS(new BonusAniversario(new AdicionalPericulosidade(new FolhaPagamentoFuncionario(1000.0f)))));
 
+        //Resultado esperado:
         assertEquals(1227.875f, folha.getSalarioLiquido());
     }
 }
